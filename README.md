@@ -1,3 +1,34 @@
+<!-- PROYECTO FINAL DE ANGULAR
+Les comento que el proyecto final se desarrolla con una idea libre,
+esto quiere decir que la funcionalidad de su pagina queda a su criterio.
+La idea es que usted haga todo su proyecto con lo que más les guste,
+el diseño lo pueden hacer con HTML5, CSS3 puro o usar cualquier framework que les acomode.
+Se evaluará:
+1.- Arquitectura                        (   )
+2.- Uso de módulos                      (   )
+3.- Manejo de rutas                     (   )
+4.- Lazy load                           (   )
+5.- Uso de servicios y consumo de apis  (   )
+6.- Método de Autenticación             (   )
+7.- Uso de pipes y directivas           (   )
+8.- Comunicación entre componentes      (   )
+9.- Uso de formularios reactivos        (   )
+10.- Uso de guards en al menos 2 rutas  (   )
+
+Entregables:
+Enlace del repositorio a Github, procure dejar el enlace sin restricciones o permisos.-
+COMIENZO DE PROYECTO FINAL: 18/01/2023.
+FECHA DE ENTREGA: 18/02/2023 
+-->
+
+
+
+
+
+
+
+
+
 # AngularProyectoFinalJGBC
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
