@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'payment', loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule) },
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch:'full'},
+  { path: 'sing-up', loadChildren: () => import('./sing-up/sing-up.module').then(m => m.SingUpModule) },
 ];
 
 @NgModule({

@@ -1,0 +1,27 @@
+.card{
+    margin: 15px;
+    
+}
+
+img{
+    cursor: pointer;
+}
+
+.card:hover{
+    border-color: forestgreen;
+    border-width: 2px;
+}
+
+a{
+    padding: 1px;
+    margin-bottom: 5px;
+}
+
+.btn-secondary{
+    margin-left: 15px;
+}
+
+#btn-ctr{
+    display: flex;
+    justify-content: center;
+}
