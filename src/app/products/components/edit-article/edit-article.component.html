@@ -1,1 +1,31 @@
-<p>edit-article works!</p>
+<app-select-bar></app-select-bar>
+<h1>Editar Artículo</h1>
+<form class="was-validated" [formGroup]="forma" (ngSubmit)="guardar(this.forma)">
+  <div class="mb-3">
+    <label for="validationTextarea" class="form-label">Titulo</label>
+    <textarea maxlength="50" class="form-control" id="validationTextarea" placeholder="Ingrese titulo" required formControlName="cardTitlePub"></textarea>
+    <div class="invalid-feedback">
+      Por favor ingresa el titulo de la publicación.
+    </div>
+  </div>
+    <div class="mb-3">
+      <label for="validationTextarea" class="form-label">Descripción</label>
+      <textarea maxlength="108" class="form-control" id="validationTextarea" placeholder="Ingresar descripción" required formControlName="message"></textarea>
+      <div class="invalid-feedback" >
+        Por favor ingresa la descripción de la publicación.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <input #fileInput  class="form-control" aria-label="file example" required formControlName="imagen">
+      <div class="invalid-feedback">Ingresar archivo (Es de prueba solo permite seleccionar jpg, png, jpeg)</div>
+    </div>
+  
+    <div class="mb-3 but-now">
+      <button [disabled]="!forma.valid" *ngIf="forma.valid" class="btn btn-primary" type="submit" >Actualizar</button>
+    </div>
+
+    <div class="mb-3 but-now">
+      <button id="invalidForma" [disabled]="!forma.valid" *ngIf="!forma.valid" class="btn btn-primary" type="submit" >Actualizar</button>
+    </div>
+</form>

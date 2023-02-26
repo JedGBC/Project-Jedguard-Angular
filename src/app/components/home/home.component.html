@@ -1,2 +1,12 @@
-<p>Publica y Adopta una mascota Guardián!</p>
-<app-card></app-card>
+<h2>Publica o Adopta una mascota Guardián!</h2>
+
+<div id="contenedorHome">
+    <div id="contenedorSubHome">
+        <app-card 
+            (selectPub)="addCart2($event)"
+            [dataInput]="data"
+            [indexInput]="i"
+            *ngFor="let data of items; let i = index">
+        </app-card>
+    </div>
+</div>

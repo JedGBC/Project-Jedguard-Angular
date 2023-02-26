@@ -1,0 +1,60 @@
+body {
+    background: linear-gradient(to right, #c04848, #480048);
+    min-height: 100vh
+}
+
+.text-gray {
+    color: #aaaaaa
+}
+
+img {
+    max-height: 405px;
+    width: 82%;
+    position: absolute;
+    bottom: 11%;
+    right: 9%;
+}
+
+#contenedorCard{
+    height: 600px;
+}
+
+h1{
+    color: black !important;
+}
+
+#btn-eliminar{
+    margin-left: 15px;
+}
+
+
+
+div.container.py-5{
+    padding-top: 0 !important;
+}
+
+p {
+        font-size: 1.5em !important;
+        width: 95% !important;
+        margin: 10px auto !important;
+        text-align: justify !important;
+        text-justify: auto !important;
+        height: 140px;
+        display: block !important;
+}
+
+div#butons-sss{
+    display: flex;
+    justify-content: center;
+}
+
+div.container.py-5{
+    padding: 0px 0 90px 0 !important;
+}
+
+@media (min-width: 992px){
+    .col-lg-8 {
+        flex: 0 0 auto;
+        width: 50% !important;
+    }
+}

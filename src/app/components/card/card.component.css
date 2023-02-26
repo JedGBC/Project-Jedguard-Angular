@@ -25,3 +25,8 @@ a{
     display: flex;
     justify-content: center;
 }
+
+img{
+    max-width: 286.4px !important;
+    max-height: 229.11px !important;
+}

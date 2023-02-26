@@ -1,0 +1,28 @@
+div.row{
+    margin-bottom: 50px !important;
+    display: flex;
+    justify-content: center;
+}
+
+h3{
+    min-width: 400px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+p {
+    min-width: 400px !important;
+}
+
+img{
+    min-width: 400px !important;
+}
+
+div.col-md-8{
+    min-width: 400px !important;
+}
+
+a.btn{
+    margin-left: 18px;
+}

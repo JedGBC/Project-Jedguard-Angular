@@ -1,0 +1,18 @@
+<h1>Estas mirando {{ pubs?.cardTitlePub }}</h1>
+<a class="btn btn-outline-primary" [routerLink]="['/home']"> Volver</a>
+<hr />
+
+<div class="row">
+  <div class="col-md-4">
+    <img [src]="pubs?.imagen" class="img-fluid" />
+    <br /><br />
+    <div class="col-md-8">
+      <h3>{{ pubs?.cardTitlePub }}</h3>
+      <hr />
+      <p>Descripción {{ pubs?.message }}</p>
+
+      
+      
+    </div>
+  </div>
+</div>

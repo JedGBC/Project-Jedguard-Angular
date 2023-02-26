@@ -1,1 +1,8 @@
-<p>products works!</p>
+<app-select-bar></app-select-bar>
+<a id="btn-volver" class="btn btn-outline-primary" [routerLink]="['/home']"> Volver</a>
+<app-show-list-articles
+    (selectPub)="addEdit($event)"
+    [dataInput]="data"
+    [indexInput]="i"
+    *ngFor="let data of items; let i = index">
+</app-show-list-articles>

@@ -1,3 +1,22 @@
-p{
+h2{
     margin: 15px;
+
+}
+
+app-card{
+    display: flex;
+    height: 426.31px !important;
+    margin-bottom: 50px;
+}
+
+#contenedorSubHome{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#contenedorHome{
+    display: flex;
+    flex-wrap: wrap;
 }

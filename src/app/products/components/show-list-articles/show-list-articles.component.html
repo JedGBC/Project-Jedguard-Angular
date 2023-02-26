@@ -1,1 +1,40 @@
-<p>show-list-articles works!</p>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- List group-->
+            <ul class="list-group shadow">
+                <!-- list group item-->
+                <li class="list-group-item">
+                    <!-- Custom content-->
+                    <div id="contenedorCard" class="media align-items-lg-center flex-column flex-lg-row p-3">
+                        <div class="media-body order-2 order-lg-1">
+                            <div id="textCaptura">
+                                <h5 class="mt-0 font-weight-bold mb-2">{{ dataInput.cardTitlePub }}</h5>
+                                <p class="font-italic text-muted mb-0 small">{{ dataInput.message }}</p>
+                            </div>
+                            
+                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                <ul class="list-inline small">
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
+                                </ul>
+                            </div>
+                        </div><img [src]="dataInput.imagen" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                    </div> <!-- End -->
+                    <div id="butons-sss">
+                        <a (click)="detailPubEdit(indexInput)" class="btn btn-outline-primary" [routerLink]="['products/editArticle']"> Editar</a>
+                        <a (click)="deletePublication(indexInput)" id="btn-eliminar" class="btn btn-primary" > Eliminar</a>
+                    </div>
+                    
+                </li> <!-- End -->
+            </ul> <!-- End -->
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</div>

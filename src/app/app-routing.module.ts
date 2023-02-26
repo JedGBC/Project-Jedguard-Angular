@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { PublicationDetailsComponent } from './components/publication-details/publication-details.component';
+import { Auth0Guard } from './guards/auth0.guard';
 
 const routes: Routes = [
-  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) }, 
-  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) }, 
-  { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) }, 
-  { path: 'payment', loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule) },
+  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) , canActivate:[Auth0Guard]}, 
+  { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) , canActivate:[Auth0Guard]}, 
+  { path: 'payment', loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule) , canActivate:[Auth0Guard]},
   { path: 'home', component: HomeComponent},
-  { path: '', redirectTo: '/home', pathMatch:'full'},
-  { path: 'sing-up', loadChildren: () => import('./sing-up/sing-up.module').then(m => m.SingUpModule) },
+  { path: 'publicationDetails/:id', component: PublicationDetailsComponent},
+  { path: '', redirectTo: '/home', pathMatch:'full'}
 ];
 
 @NgModule({
