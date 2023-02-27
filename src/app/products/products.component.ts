@@ -17,7 +17,7 @@ export class ProductsComponent {
     check = Number(localStorage.getItem("check"));
     check2 = Number(localStorage.getItem("check2"));
     if (check === 1 && check2 === 0) {
-      this.items = JSON.parse("["+(localStorage.getItem("postPublication") || "[]")+"]") ;
+      this.items = JSON.parse("["+(localStorage.getItem("postPublication") || "[]")+"]");
     } else if (check > 1 && check2 === 0) {
       this.items = JSON.parse(localStorage.getItem("postPublication") || "[]");
     } else if (check === 1 && check2 === 1){

@@ -4,16 +4,16 @@ esto quiere decir que la funcionalidad de su pagina queda a su criterio.
 La idea es que usted haga todo su proyecto con lo que más les guste,
 el diseño lo pueden hacer con HTML5, CSS3 puro o usar cualquier framework que les acomode.
 Se evaluará:
-1.- Arquitectura                        (   )
-2.- Uso de módulos                      (   )
-3.- Manejo de rutas                     (   )
-4.- Lazy load                           (   )
-5.- Uso de servicios y consumo de apis  (   )
-6.- Método de Autenticación             (   )
-7.- Uso de pipes y directivas           (   )
-8.- Comunicación entre componentes      (   )
-9.- Uso de formularios reactivos        (   )
-10.- Uso de guards en al menos 2 rutas  (   )
+1.- Arquitectura                        ( OK )
+2.- Uso de módulos                      ( OK )
+3.- Manejo de rutas                     ( OK )
+4.- Lazy load                           ( OK )
+5.- Uso de servicios y consumo de apis  ( OK )
+6.- Método de Autenticación             ( OK )
+7.- Uso de pipes y directivas           ( OK )
+8.- Comunicación entre componentes      ( OK )
+9.- Uso de formularios reactivos        ( OK )
+10.- Uso de guards en al menos 2 rutas  ( OK )
 
 Entregables:
 Enlace del repositorio a Github, procure dejar el enlace sin restricciones o permisos.-

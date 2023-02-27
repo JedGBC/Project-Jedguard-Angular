@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ArticlesService } from './services/articles.service';
+import { OnloadService } from './services/onload.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,12 @@ export class AppComponent {
   title = 'AngularProyectoFinal_JGBC';
   
   multiplesPicsDogs:any;
-  constructor(private serviceA:ArticlesService) { }
+  constructor(private serviceA:ArticlesService, private onload: OnloadService) {
+    serviceA.getPublications();
+   }
   
   ngOnInit(): void {
+    this.onload.fillData();
     this.listDogs(); // se inicializa una sola vez para que cargue la data al iniciar la app.
   }
 

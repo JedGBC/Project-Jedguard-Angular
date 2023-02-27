@@ -59,6 +59,7 @@ chageForm(data:any){ //cargar el form con data almacenada devuelta por el serv. 
   }
   
   guardar(datosUser:any){
+  
     if (this.forma.status === 'INVALID') {
       console.log("Aún faltan campos del formulario por ingresar, revise por favor!");
       return

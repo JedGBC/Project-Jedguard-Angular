@@ -11,7 +11,9 @@ export interface pubs{
   providedIn: 'root'
 })
 export class ArticlesService {
-
+  private itemsPersonalPubs : pubs [] = [];
+  private itemsBase : pubs [] = [];
+  private itemsPubs : pubs [] = [];
   private pubsDB:any = [];
 
   private newDataPublication : any = {
@@ -74,7 +76,9 @@ export class ArticlesService {
   getDogsPictures():Observable<any>{
     let cant = this.dataPublications.length;
     console.log("Is hited : ArticlesService.getDogsPictures()",cant);
-    return this.http.get(this.urlApi+'/'+cant);
+    this.http.get(this.urlApi+'/'+(cant));
+    
+    return this.http.get(this.urlApi+'/'+(cant));
   }
   
   getPublications(){
@@ -85,14 +89,15 @@ export class ArticlesService {
     //JSON.parse(sessionStorage.getItem("publicacionesWeb") || "[]"); //para rescatar la data
     return X;
   }
-
-  private integratePubs(){
+  
+  
+  private integratePubs(){ //carga imagenes en las cards
     
     this.pubsDB = [];
-    console.log(this.pubsDB);
+    //console.log(this.pubsDB);
 
     this.pubsDB.push(this.newDataPublication);
-    console.log(this.pubsDB);
+    //console.log(this.pubsDB);
     
     for (let index = 0; index < this.dataPublications.length; index++) {
       const img = JSON.parse(sessionStorage.getItem("picsServiceResponse") || "[]");
@@ -104,15 +109,18 @@ export class ArticlesService {
     this.pubsDB.push(this.dataPublications[index]);
     }
     
-    console.log(this.pubsDB);
+    //console.log(this.pubsDB);
     return this.pubsDB;
 
     
   }
 
   getPubsDetail(id:any){
-    console.log(this.pubsDB);
-    return this.pubsDB[id];
+    //console.log(this.pubsDB);
+    console.log(id);
+    //return this.pubsDB[id];
+    let list = this.getDataListComplete();
+    return list[id];
   }
   
   getOnePic(){
@@ -167,8 +175,18 @@ export class ArticlesService {
     
   getLocalStoragePostPublication(id:any){
     console.log(id);
+    let check : number;
+    let check2 : number;
+    let value;
+    check = Number(localStorage.getItem("check"));
+    check2 = Number(localStorage.getItem("check2"));
+    if (check === 1 && check2 === 0) {
+      value = JSON.parse("["+(localStorage.getItem("postPublication") || "[]")+"]");
+    } else {
+      value = JSON.parse(localStorage.getItem("postPublication") || "[]");
+    }
+
     
-    let value = JSON.parse(localStorage.getItem("postPublication") || "[]");
     console.log("*** getLocalStoragePostPublication() devuelve objeto a editar***");
     return value[id]; //retornamos el object
     
@@ -176,10 +194,30 @@ export class ArticlesService {
 
   postChangeObjectInLocalStorage(obj:any,id:any){
     console.log("*** postChangeObjectInLocalStorage() Se edita el objeto correctamente***");
-    let value = JSON.parse(localStorage.getItem("postPublication") || "[]");
-    console.log("Valor antiguo: ",value[id]);
-    value[id] = obj;
-    console.log("Valor Nuevo: ",value[id]);
+    //debugger;
+    let value;
+    let check : number;
+    let check2 : number;
+    check = Number(localStorage.getItem("check"));
+    check2 = Number(localStorage.getItem("check2"));
+    
+    if (check === 1 && check2 === 0) {
+      value = JSON.parse("["+(localStorage.getItem("postPublication") || "[]")+"]");
+      console.log("Valor antiguo: ",value);
+      value = obj;
+      console.log("Valor Nuevo: ",value);
+    } else if (check > 1 && check2 === 0) {
+      value = JSON.parse(localStorage.getItem("postPublication") || "[]");
+      console.log("Valor antiguo: ",value[id]);
+      value[id] = obj;
+      console.log("Valor Nuevo: ",value[id]);
+    } else if (check === 1 && check2 === 1){
+      value = JSON.parse(localStorage.getItem("postPublication") || "[]");
+      console.log("Valor antiguo: ",value[id]);
+      value[id] = obj;
+      console.log("Valor Nuevo: ",value[id]);
+    }
+    
     localStorage.setItem("postPublication",JSON.stringify(value));
     return console.log("Se actualizo el valor correctamente del obj:",value[id]);
   }
@@ -206,5 +244,47 @@ export class ArticlesService {
     }
     
     
+  }
+
+  getDataListComplete(){ //tiene todos los arrays
+    //debugger;
+    
+    
+
+    this.itemsBase = [];
+    this.itemsPubs = [];
+    this.itemsBase = this.getPublications();
+    this.itemsPubs = this.callPublications();
+    console.log("-------------------1-publicas",this.itemsBase.length);
+    console.log("-------------------2-privadas",this.itemsPubs.length);
+    let itemsA = [];
+    for (let index = 0; index < (this.itemsBase.length); index++) {
+      itemsA.push(this.itemsBase[index]);
+    }
+
+    for (let index = 0; index < (this.itemsPubs.length); index++) {
+      itemsA.push(this.itemsPubs[index]);
+    }
+    console.log("getDataListComplete()",itemsA);
+    return itemsA;
+  }
+
+  callPublications(){ //complemento de getDataListComplete()
+    //debugger;
+    let check : number;
+    let check2 : number;
+    check = Number(localStorage.getItem("check"));
+    check2 = Number(localStorage.getItem("check2"));
+    if (check === 1 && check2 === 0) {
+      this.itemsPersonalPubs = JSON.parse("["+(localStorage.getItem("postPublication") || "[]")+"]");
+    } else if (check > 1 && check2 === 0) {
+      this.itemsPersonalPubs = JSON.parse(localStorage.getItem("postPublication") || "[]");
+    } else if (check === 1 && check2 === 1){
+      this.itemsPersonalPubs = JSON.parse(localStorage.getItem("postPublication") || "[]");
+    } else if (check === 0 && check2 === 0){
+      this.itemsPersonalPubs = [];
+    }
+
+    return this.itemsPersonalPubs;
   }
 }

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
-import { SearchFiltersComponent } from './components/search-filters/search-filters.component';
 import { CardComponent } from './components/card/card.component';
 import { ArticlesService } from './services/articles.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +18,6 @@ import { PublicationDetailsComponent } from './components/publication-details/pu
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    SearchFiltersComponent,
     CardComponent,
     PublicationDetailsComponent
   ],
