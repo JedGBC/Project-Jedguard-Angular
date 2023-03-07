@@ -10,7 +10,7 @@ import { ArticlesService, pubs } from 'src/app/services/articles.service';
 })
 export class HomeComponent implements OnInit{
   items : pubs [] = [];
-  
+  cartItems : pubs [] = [];
 
   constructor(private myservice: ArticlesService) {
     
@@ -20,9 +20,10 @@ export class HomeComponent implements OnInit{
     
   }
 
-  addCart2(element:any){
+  addCart2(element:number){
     console.log("addCart2(): Se agregó al carrito, el elemento #", element);
+    this.myservice.postAdoptionsCartList(this.items[element]);
   }
-
+  
 
 }

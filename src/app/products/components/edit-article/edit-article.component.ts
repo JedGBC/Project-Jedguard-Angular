@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticlesService } from 'src/app/services/articles.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-edit-article',
@@ -15,7 +16,7 @@ export class EditArticleComponent implements OnInit{
   id:any;
   
   
-  constructor(private fb:FormBuilder, private service: ArticlesService, private route: ActivatedRoute,  private router: Router) {
+  constructor(private fb:FormBuilder, private service: ArticlesService, private route: ActivatedRoute,  private router: Router, private serviceProfile: ProfileService) {
     this.forma = this.fb.group({});
     this.creaForm();
   }
@@ -35,7 +36,8 @@ chageForm(data:any){ //cargar el form con data almacenada devuelta por el serv. 
   this.forma = this.fb.group({
     cardTitlePub: [mydata.cardTitlePub],
     message : [mydata.message],
-    imagen : [mydata.imagen]
+    imagen : [mydata.imagen],
+    item_id : [mydata.item_id]
   })
   
 }
@@ -69,7 +71,9 @@ chageForm(data:any){ //cargar el form con data almacenada devuelta por el serv. 
     let obj = {
       cardTitlePub : this.forma.get('cardTitlePub')?.value,
       message : this.forma.get('message')?.value,
-      imagen : this.forma.get('imagen')?.value
+      imagen : this.forma.get('imagen')?.value,
+      id_user : this.serviceProfile.getUser(),
+      item_id : this.forma.get('item_id')?.value
     }
     console.log(obj);
     console.log("ID###",this.id);
@@ -77,7 +81,7 @@ chageForm(data:any){ //cargar el form con data almacenada devuelta por el serv. 
     this.service.postChangeObjectInLocalStorage(obj,this.id);
     
 
-    this.router.navigate(['/home']);
+    this.router.navigate(['/products']);
   }
   
 

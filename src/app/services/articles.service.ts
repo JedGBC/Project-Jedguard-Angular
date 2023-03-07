@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 export interface pubs{
   cardTitlePub : string,
   message : string,
-  imagen : string
+  imagen : string,
+  id_user : string,
+  item_id : string
 }
 @Injectable({
   providedIn: 'root'
@@ -19,54 +21,86 @@ export class ArticlesService {
   private newDataPublication : any = {
   cardTitlePub : 'Pequeño Affenpinsher', 
   message : 'Hola estoy buscando un hogar que me pueda acoger, por favor sé mi guardián.',
-  imagen : './assets/img/affenpninsher.jpg'};
+  imagen : './assets/img/affenpninsher.jpg',
+  id_user: '0',
+  item_id: '1'};
   
   private dataPublications:any = [ //DATA BASE PARA RELLENO
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '2'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '3'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '4'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '5'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '6'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '7'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '8'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '9'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '10'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '11'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '12'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '13'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '14'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''},
+    imagen : '',
+    id_user: '0',
+    item_id: '15'},
     {cardTitlePub : 'Rescatado hermoso perrito', 
     message : 'Hola estoy buscando un hogar fui abandonado en la calle, Adoptame!',
-    imagen : ''}
+    imagen : '',
+    id_user: '0',
+    item_id: '16'}
   ];
 
   private urlApi = 'https://dog.ceo/api/breeds/image/random';
@@ -269,7 +303,7 @@ export class ArticlesService {
     return itemsA;
   }
 
-  callPublications(){ //complemento de getDataListComplete()
+  private callPublications(){ //complemento de getDataListComplete()
     //debugger;
     let check : number;
     let check2 : number;
@@ -287,4 +321,56 @@ export class ArticlesService {
 
     return this.itemsPersonalPubs;
   }
+
+  getAdoptionsCartList(){
+    let listAdopt:pubs[]=[];
+    listAdopt = JSON.parse(localStorage.getItem("cartList") || "null");
+    return listAdopt;
+  }
+
+  postAdoptionsCartList(obj:pubs){
+        
+    if (JSON.parse(localStorage.getItem("cartList") || "null")===null) {
+      if (obj.id_user !== sessionStorage.getItem("userData")) {
+        localStorage.setItem("cartList","["+JSON.stringify(obj)+"]");
+      } else {
+        alert("No puedes adoptar tu propia mascota publicada!");
+      }
+    } else {
+      if (obj.id_user !== sessionStorage.getItem("userData")) {
+        let obj1 = JSON.parse(localStorage.getItem("cartList") || "null");
+        let contador=0;
+        for (let index = 0; index < obj1.length; index++) {
+          if (obj1[index].item_id === obj.item_id) {
+            contador++;
+          } 
+        }
+        if (contador===0) {
+          obj1.push(obj);
+          localStorage.setItem("cartList",JSON.stringify(obj1));
+        } else {
+          console.log("PUBLICACION YA ESTA EN CARRITO");
+        }
+      } else {
+        alert("No puedes adoptar tu propia mascota publicada!");
+      }
+    }
+  }
+  
+  deleteAdoptionsCartList(id:number){
+    console.log("BORRAR ITEM ",id);
+    let obj1 = JSON.parse(localStorage.getItem("cartList") || "null");
+    
+    if (obj1.length===1) {
+      localStorage.removeItem("cartList");
+    } else {
+      obj1.splice(id,1);
+      localStorage.setItem("cartList",JSON.stringify(obj1));
+    }
+  }
+
+  deleteCartList(){
+    localStorage.removeItem("cartList");
+  }
+
 }

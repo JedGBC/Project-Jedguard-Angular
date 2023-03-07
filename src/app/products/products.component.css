@@ -1,3 +1,20 @@
 #btn-volver{
     margin: 10px;
 }
+
+.informer{
+    display: flex !important;
+    justify-content: center !important;
+    font-weight: 900 !important;
+    font-size: xx-large !important;
+    font-family: 'Courier New' !important;
+}
+
+#btn-crearPub:hover{
+    background-color: rgb(2, 97, 2);
+}
+
+#cont-btn-crearPub{
+    display: flex !important;
+    justify-content: center !important;
+}

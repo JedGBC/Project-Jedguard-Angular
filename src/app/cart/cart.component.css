@@ -1,0 +1,15 @@
+#btn-volver{
+    margin: 10px;
+}
+
+.informer{
+    display: flex !important;
+    justify-content: center !important;
+    font-weight: 900 !important;
+    font-size: xx-large !important;
+    font-family: 'Courier New' !important;
+}
+
+#spaceWhite{
+    height: 70px;
+}

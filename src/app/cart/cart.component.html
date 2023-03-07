@@ -1,1 +1,13 @@
-<p>cart works!</p>
+<a id="btn-volver" class="btn btn-outline-primary" [routerLink]="['/home']"> Volver</a>
+<app-summary
+    (selectPub3)="addEdit($event)"
+    [dataInput3]="data"
+    [indexInput3]="i"
+    *ngFor="let data of items3; let i = index">
+</app-summary>
+
+<div *ngIf="items3 === null || items3[0].cardTitlePub==''">
+    <p class="informer">No tienes adopciones a coordinar!</p>
+</div>
+
+<div id="spaceWhite"></div>

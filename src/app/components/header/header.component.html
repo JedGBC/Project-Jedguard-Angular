@@ -12,7 +12,9 @@
         <li><a *ngIf="auth.user$ | async as user" class="nav-link active" id="crearpub" aria-current="page" [routerLink]="['products/createArticle']">Crear publicación</a></li>
       </ul>
 
-      
+      <ul id="Amber">
+        <li id="AmberB" *ngIf="auth.user$ | async as user"> {{user.name}} </li>
+      </ul>
 
       <div class="text-end">
         <ng-template #loggedOut>
@@ -22,7 +24,7 @@
         </ng-template>
 
         <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-          <button  type="button" class="btn btn-warning" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+          <button  type="button" class="btn btn-warning" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } }) && cerrarSesion()">
             Cerrar Sesión
           </button>
         </ng-container>

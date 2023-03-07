@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticlesService } from 'src/app/services/articles.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-create-article',
@@ -13,9 +14,9 @@ export class CreateArticleComponent {
   forma: FormGroup;
   picDog:any;
   
-  constructor(private fb:FormBuilder, private service: ArticlesService,  private router: Router) {
+  constructor(private fb:FormBuilder, private service: ArticlesService,  private router: Router, private serviceProfile: ProfileService) {
     let valor = this.oneDogPic();
-    console.log("LOL ",valor);
+    console.log("****123 ",valor);
     this.forma = this.fb.group({});
     this.creaForm();
   }
@@ -49,9 +50,11 @@ export class CreateArticleComponent {
     let obj = {
       cardTitlePub : this.forma.get('cardTitlePub')?.value,
       message : this.forma.get('message')?.value,
-      imagen : localStorage.getItem("picDog")
+      imagen : localStorage.getItem("picDog"),
+      id_user : this.serviceProfile.getUser(),
+      item_id : Date.now().toString()
     }
-    console.log(obj);
+    console.log("Objeto creado",obj);
     
     this.service.postPublication(obj);
 

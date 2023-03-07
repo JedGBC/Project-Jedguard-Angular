@@ -11,6 +11,7 @@ import { ArticlesService } from './services/articles.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from '@auth0/auth0-angular';
 import { PublicationDetailsComponent } from './components/publication-details/publication-details.component';
+import { ProfileService } from './services/profile.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { PublicationDetailsComponent } from './components/publication-details/pu
       }
     }),
   ],
-  providers: [ArticlesService],
+  providers: [ArticlesService,ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

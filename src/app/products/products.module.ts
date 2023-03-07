@@ -7,7 +7,6 @@ import { ProductsComponent } from './products.component';
 import { CreateArticleComponent } from './components/create-article/create-article.component';
 import { EditArticleComponent } from './components/edit-article/edit-article.component';
 import { ShowListArticlesComponent } from './components/show-list-articles/show-list-articles.component';
-import { SelectBarComponent } from './components/select-bar/select-bar.component';
 
 
 @NgModule({
@@ -15,8 +14,7 @@ import { SelectBarComponent } from './components/select-bar/select-bar.component
     ProductsComponent,
     CreateArticleComponent,
     EditArticleComponent,
-    ShowListArticlesComponent,
-    SelectBarComponent
+    ShowListArticlesComponent
   ],
   imports: [
     CommonModule,

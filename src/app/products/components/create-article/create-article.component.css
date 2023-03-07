@@ -19,3 +19,8 @@ h1{
     left: 48%;
     position: absolute;
 }
+
+#btn-volver{
+    margin: 10px;
+    position: absolute;
+}

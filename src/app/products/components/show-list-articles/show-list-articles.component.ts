@@ -29,7 +29,13 @@ export class ShowListArticlesComponent {
   deletePublication(index: number){
     console.log("Articulo a borrar #",index);
     this.service.deleteObjectInLocalStorage(index);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/products']);
+    
+    this.router.navigateByUrl('', { skipLocationChange: true }).then(() => { // en vez del window.location.reload(); es mas rapido
+      this.router.navigate(['/products']);
+    }); 
+
+    //window.location.reload();
   }
 
 }
